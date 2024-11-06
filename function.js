@@ -51,14 +51,60 @@ function findDigitCount(number, digit) {
     return count;
 }
 
-findDigitCount(2221, 2); 
+findDigitCount(212, 2); 
 
-function nNumber(number){
-   number = n
-    while(n === d){
-        d = n - 1
-        d+
-        console.log(d)
+function nNumber(n) {
+    for (let i = 1; i <= n; i++) {
+      let row = "";
+      for (let j = 1; j <= i; j++) {
+        row += j + " ";
+      }
+      console.log(row);
     }
+  }
+  
+
+  nNumber(5);
+  
+  function OrgilYrool(Input) {
+    Input.shift(); 
+    Input.pop(); 
+
+    for (let indexF = 0, indexS = 1, indexL = 2, count = 0; indexL < Input.length; indexF ++, indexS ++, indexL ++, count++) {
+        let firstN = Input[indexF];
+        let secondN = Input[indexS];
+        let thirdN = Input[indexL];
+        
+        if (firstN < secondN && secondN > thirdN) {
+            console.log("Orgil")
+            console.log(firstN, secondN, thirdN);
+        }
     }
-nNumber(5)
+    for (let indexF = 0, indexS = 1, indexL = 2, count = 0; indexL < Input.length; indexF ++, indexS ++, indexL ++, count++) {
+        let firstN = Input[indexF];
+        let secondN = Input[indexS];
+        let thirdN = Input[indexL];
+        
+        if (firstN > secondN && secondN < thirdN) {
+            console.log("Yrool")
+            console.log(firstN, secondN, thirdN);
+        }
+    }
+}
+
+
+
+OrgilYrool([1, 2, 5, 4, 1, 9, 6, 5, 3, 4, 1, -2]);
+
+
+function findSecondIncreasingNumber(arr) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < arr[i + 1]) {
+            return arr[i + 1]; 
+        }
+    }
+    return null; 
+}
+
+const result = findSecondIncreasingNumber([1, 2, 5, 3, 7, 6]);
+console.log(result); 
