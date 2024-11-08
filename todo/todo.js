@@ -1,35 +1,38 @@
-document.getElementById("buttonAdd").onclick = function(){
-    let text = document.getElementById("text").value
-    document.getElementById("result").textContent = todos
+let inputBox = document.getElementById("input-box")
+let listContainer = document.getElementById("list-container");
+
+
+function addTask () {
+    if(inputBox.value === ''){
+        alert(`Write something`);
+    }
+    else{
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+        listContainer.appendChild(li);
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+    }
+    inputBox.value = "";
+    saveData();
 }
 
+listContainer.addEventListener("click", function(e){
+    if(e.target.tagName === "LI"){
+        e.target.classList.toggle("checked");
+        saveData()
+    }
+    else if(e.target.tagName === "SPAN"){
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
 
-
-const todos = [];
-
-function addOne(newTodo){
-    todos.push(newTodo);
+function saveData(){
+    localStorage.setItem("data", listContainer.innerHTML);
 }
-
-function editStatus(index, status) {
-    let item = todos[index];
-    item.status = status;
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
 }
-
-function editName(){
-    
-
-}
-
-
-function deleteOne() {
-    
-    
-}
-
-addOne({name: "Hool hiih", status: "TODO"});
-addOne({name: "Hool hiih", status: "TODO"});
-addOne({name: "Hool hiih", status: "TODO"});
-editStatus(1, "Done");
-
-console.log(todos)
+showTask()

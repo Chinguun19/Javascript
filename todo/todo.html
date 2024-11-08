@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="/todo/todo.css">
 </head>
 <body>
-    <h1 id="Title">To Do List</h1>
-    <input id="text" type="text">
-    <button id="buttonAdd">ADD</button>
-    <div class="list-container">
+    <div class="container">
+        <div class="todo-app">
+    <h1 id="Title">ToDo List <img src=""> </h1>
+    </div>
+    <input id="input-box" type="text" placeholder="Add your task" onkeydown="if (event.keyCode == 13)
+                        document.getElementById('buttonAdd').click()">
+    <button onclick="addTask()" id="buttonAdd">+</button>
+    <ul id="list-container">
+    </ul>
+    </div>
     <h2 id="result"></h2> <br>
 </div>
     <label id="resultLabel" for="result"></label>
